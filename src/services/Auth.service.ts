@@ -1,5 +1,6 @@
 import { IAuthData } from '../types';
 import requests from './http.service';
+
 class AuthService {
     login(body: { email: string; password: string }): Promise<IAuthData> {
         return requests.post(`/auth/login`, body);
@@ -10,5 +11,5 @@ class AuthService {
     }
 }
 
-// eslint-disable-next-line import/no-anonymous-default-export
+
 export default new AuthService();
