@@ -1,5 +1,5 @@
-import { IProduct } from 'types';
-import { ActionType } from 'redux/actionTypes';
+import { IProduct } from "../../types";
+import { ActionType } from "../actionTypes";
 
 interface addToCartAction {
   type: ActionType.ADD_TO_CART;

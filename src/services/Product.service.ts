@@ -1,29 +1,37 @@
 import { IProduct } from "../types";
-import requests from "./http.service";
+import httpReq from "./http.service";
 
 class ProductService {
-    getProducts(): Promise<IProduct[]> {
-        return requests.get('/product');
+    async getProducts(): Promise<IProduct[]> {
+        // return httpReq.get('/product');
+        const { data } = await httpReq.get("/product");
+        return data;
     }
 
-    getMerchantsProducts(): Promise<IProduct[]> {
-        return requests.get('/merchant/products');
+    async getMerchantsProducts(): Promise<any> {
+        const { data } = httpReq.get('/merchant/products');
+        return data;
     }
 
-    getProductByID(id: string): Promise<IProduct> {
-        return requests.get(`/product/${id}`);
+    async getProductByID(id: string): Promise<IProduct> {
+        const { data } = httpReq.get(`/product/${id}`);
+        return data;
     }
 
-    addProduct(body: {}): Promise<IProduct> {
-        return requests.post(`/product/`, body);
+    async addProduct(body: {}): Promise<IProduct> {
+
+        const { data } = httpReq.post(`/product/`, body);
+        return data
     }
 
     updateProduct(id: string, body: {}): Promise<IProduct> {
-        return requests.post(`/product/${id}`, body);
+        const { data } = httpReq.update(`/product/`, body);
+        return data
     }
 
     deleteProduct(id: string): Promise<IProduct> {
-        return requests.delete(`/product/${id}`);
+        const { data } = httpReq.delete(`/product/`, body);
+        return data
     }
 }
 

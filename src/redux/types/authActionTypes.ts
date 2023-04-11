@@ -1,5 +1,5 @@
-import { IAuthData } from './../../types';
-import { ActionType } from 'redux/actionTypes';
+import { IAuthData } from '../../types';
+import { ActionType } from '../actionTypes';
 
 interface loginSuccessAction {
   type: ActionType.LOGIN_SUCCESS;

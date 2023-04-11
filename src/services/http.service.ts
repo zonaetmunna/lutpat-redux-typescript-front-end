@@ -1,40 +1,66 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 
-const baseUrl = process.env.REACT_APP_API_BASE_URL;
-console.log('baseUrl', baseUrl);
-const instance = axios.create({
-    baseURL: 'https://fvaly.onrender.com/api/',
+
+const axiosConfig: AxiosRequestConfig = {
+    baseURL: process.env.REACT_APP_API_BASE_URL,
     timeout: 15000,
-});
-
-// Add a request interceptor
-
-// Add a request interceptor
-instance.interceptors.request.use(function (config) {
-    // Do something before request is sent
-    console.log('Api is calling');
-    return {
-        ...config,
-        headers: {
-            Authorization: JSON.parse(
-                JSON.parse(localStorage.getItem('persist:root') || '').auth
-            )?.data?.token,
-        },
-    };
-});
-
-// const responseBody = () => (response: AxiosResponse) => response.data.data;
-
-const responseBody = (response: AxiosResponse) => response.data.data;
-
-const requests = {
-    get: (url: string) => instance.get(url).then(responseBody),
-    post: (url: string, body: object) =>
-        instance.post(url, body).then(responseBody),
-    patch: (url: string, body: object) =>
-        instance.patch(url, body).then(responseBody),
-    delete: (url: string) => instance.delete(url).then(responseBody),
 };
 
-export default requests;
+const instance: AxiosInstance = axios.create(axiosConfig);
+
+
+// const baseUrl = process.env.REACT_APP_API_BASE_URL;
+// console.log('baseUrl', baseUrl);
+
+/* const axiosConfig: AxiosRequestConfig = {
+    baseURL: process.env.REACT_APP_API_BASE_URL,
+    timeout: 15000,
+};
+ */
+// const instance = axios.create({
+//     baseURL: process.env.REACT_APP_API_BASE_URL,
+//     timeout: 15000,
+// });
+
+// Add a request interceptor
+
+// Add a request interceptor
+// instance.interceptors.request.use((config) => {
+//     // Do something before request is sent
+//     console.log('Api is calling');
+//     return {
+//         ...config,
+//         headers: {
+//             Authorization: JSON.parse(
+//                 JSON.parse(localStorage.getItem('persist:root') || '').auth
+//             )?.data?.token,
+//         },
+//     };
+
+// }, (error: AxiosError) => {
+//     // Do something with request error
+//     return Promise.reject(error)
+// })
+
+
+/* const responseBody = (response: AxiosResponse) => response.data.data; */
+
+class Request {
+    async get(url: string): Promise<AxiosResponse> {
+        return instance.get(url).then((res) => res.data);
+    }
+    async post(url: string, body: any): Promise<AxiosResponse> {
+        return instance.post(url, body).then((res) => res.data);
+    }
+    async update(url: string, body: any): Promise<AxiosResponse> {
+        return instance.patch(url, body).then((res) => res.data);
+    }
+    async delete(url: string): Promise<AxiosResponse> {
+        return instance.delete(url).then((res) => res.data);
+    }
+}
+
+const httpReq = new Request();
+
+export default httpReq;

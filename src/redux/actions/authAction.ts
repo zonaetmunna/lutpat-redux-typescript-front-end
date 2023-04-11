@@ -1,7 +1,7 @@
 import { Dispatch } from 'react';
-import AuthService from '../../services/auth.service';
 import { ActionType } from '../actionTypes';
 import { AuthAction } from '../types/authActionTypes';
+import authService from '../../services/Auth.Service';
 
 
 export const login = (payload: { email: string; password: string }) => {
@@ -9,7 +9,7 @@ export const login = (payload: { email: string; password: string }) => {
         dispatch({
             type: ActionType.LOGIN_PENDING,
         });
-        AuthService.login(payload)
+        authService.login(payload)
             .then((data) => {
                 dispatch({
                     type: ActionType.LOGIN_SUCCESS,

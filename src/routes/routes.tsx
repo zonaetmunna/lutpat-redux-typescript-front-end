@@ -13,7 +13,9 @@ import AdminDashboard from "../view/pages/dashboard/adminDashboard/AdminDashboar
 import MerchantDashboard from "../view/pages/dashboard/merchantDashboard/MerchantDashboard";
 import AddProduct from "../view/pages/dashboard/AddProduct";
 import AllProduct from "../view/pages/dashboard/AllProduct";
-import MakeAdmin from "../view/pages/dashboard/MakeAdmin";
+import MakeAdmin from "../view/pages/dashboard/adminDashboard/MakeAdmin";
+import CheckList from "../view/pages/main/CheckList";
+import Payment from "../view/pages/main/Payment";
 
 export const routes = createBrowserRouter([
   // main layout
@@ -31,7 +33,7 @@ export const routes = createBrowserRouter([
         element: <ProductDetails />,
       },
       {
-        path: "signUWp",
+        path: "sign-up",
         element: <SignUp />,
       },
       {
@@ -46,10 +48,18 @@ export const routes = createBrowserRouter([
         path: "wishlist",
         element: <WishList />,
       },
+      {
+        path: "checklist",
+        element: <CheckList />,
+      },
+      {
+        path: "payment",
+        element: <Payment />,
+      },
     ],
   },
   {
-    path: "/",
+    path: "/dashboard",
     element: <Dashboard />,
     errorElement: <Error />,
     children: [

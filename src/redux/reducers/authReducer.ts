@@ -1,4 +1,4 @@
-import { IAuthData } from "../../types";
+import { IAuthData } from './../../types';
 import { ActionType } from "../actionTypes";
 import { AuthAction } from "../types/authActionTypes";
 
