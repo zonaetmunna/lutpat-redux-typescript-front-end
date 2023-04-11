@@ -11,11 +11,13 @@ import WishList from "../view/pages/main/WishList";
 import Dashboard from "../view/layout/Dashboard/Dashboard";
 import AdminDashboard from "../view/pages/dashboard/adminDashboard/AdminDashboard";
 import MerchantDashboard from "../view/pages/dashboard/merchantDashboard/MerchantDashboard";
-import AddProduct from "../view/pages/dashboard/AddProduct";
-import AllProduct from "../view/pages/dashboard/AllProduct";
+import AddProduct from "../view/pages/dashboard/merchantDashboard/AddProduct";
+import AllProduct from "../view/pages/dashboard/adminDashboard/AllProduct";
 import MakeAdmin from "../view/pages/dashboard/adminDashboard/MakeAdmin";
 import CheckList from "../view/pages/main/CheckList";
 import Payment from "../view/pages/main/Payment";
+import About from "../view/pages/main/About";
+import Contact from "../view/pages/main/Contact";
 
 export const routes = createBrowserRouter([
   // main layout
@@ -55,6 +57,14 @@ export const routes = createBrowserRouter([
       {
         path: "payment",
         element: <Payment />,
+      },
+      {
+        path: "about",
+        element: <About />,
+      },
+      {
+        path: "contact-us",
+        element: <Contact />,
       },
     ],
   },
