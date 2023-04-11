@@ -2,8 +2,8 @@ import { IDashboardStats } from '../types';
 import httpReq from './http.service';
 
 class DashboardService {
-    getStats(): Promise<IDashboardStats> {
-        const { data } = httpReq.get('/dashboard/stats');
+    async getStats(): Promise<IDashboardStats> {
+        const { data } = await httpReq.get('/dashboard/stats');
         return data;
     }
 }

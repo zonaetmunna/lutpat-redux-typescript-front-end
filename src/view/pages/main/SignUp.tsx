@@ -3,13 +3,14 @@ import { SubmitHandler, useForm, useWatch } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import loginImage from "../../../assets/login.svg";
+import { signUp } from "../../../redux/actions/authAction";
 
 // types
 
 interface IFormInput {
-  email: String;
-  password: String;
-  confirmPassword: String;
+  email: string;
+  password: string;
+  confirmPassword: string;
 }
 
 const SignUp = () => {
@@ -36,7 +37,11 @@ const SignUp = () => {
   }, [password, confirmPassword]);
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log(data);
+    const newData = {
+      email: data.email,
+      password: data.password,
+    };
+    // dispatch(signUp(newData));
   };
 
   return (

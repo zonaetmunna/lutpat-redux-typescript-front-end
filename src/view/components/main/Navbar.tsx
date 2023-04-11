@@ -23,22 +23,28 @@ const Navbar = () => {
               Home
             </Link>
             <Link
-              to="/shop"
-              className="text-gray-900 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Shop
-            </Link>
-            <Link
               to="/about"
               className="text-gray-900 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
             >
               About
             </Link>
             <Link
-              to="/contact"
+              to="contact"
               className="text-gray-900 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
             >
               Contact
+            </Link>
+            <Link
+              to="/dashboard"
+              className="text-gray-900 hover:text-gray-500 block px-3 py-2 rounded-md text-base font-medium"
+            >
+              Dashboard
+            </Link>
+            <Link
+              to="/login"
+              className="text-gray-900 hover:text-gray-500 block px-3 py-2 rounded-md text-base font-medium"
+            >
+              Login
             </Link>
           </div>
           <div className="-mr-2 flex items-center sm:hidden">
@@ -69,20 +75,15 @@ const Navbar = () => {
             >
               Home
             </Link>
+
             <Link
-              to="/shop"
-              className="text-gray-900 hover:text-gray-500 block px-3 py-2 rounded-md text-base font-medium"
-            >
-              Shop
-            </Link>
-            <Link
-              to="/about"
+              to="about"
               className="text-gray-900 hover:text-gray-500 block px-3 py-2 rounded-md text-base font-medium"
             >
               About
             </Link>
             <Link
-              to="/contact"
+              to="contact"
               className="text-gray-900 hover:text-gray-500 block px-3 py-2 rounded-md text-base font-medium"
             >
               Contact

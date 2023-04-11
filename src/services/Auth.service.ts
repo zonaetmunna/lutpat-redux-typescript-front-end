@@ -5,7 +5,7 @@ import httpReq from "./http.service";
 
 
 class AuthService {
-    async signup(body: any): Promise<IAuthData> {
+    async signup(body: { email: string; password: string }): Promise<IAuthData> {
         const { data } = await httpReq.post("/auth/signup", body);
         return data;
     }

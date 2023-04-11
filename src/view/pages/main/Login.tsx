@@ -1,13 +1,14 @@
 import React from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import loginImage from "../../../assets/login.svg";
+import { login } from "../../../redux/actions/authAction";
 
 // login data types
 interface IFormInput {
-  email: String;
-  password: String;
+  email: string;
+  password: string;
 }
 
 const Login = () => {
@@ -15,8 +16,13 @@ const Login = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit, reset } = useForm<IFormInput>();
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log(data);
+  const onSubmit = (data: IFormInput) => {
+    const newData = {
+      email: data.email,
+      password: data.password,
+    };
+    // dispatch(login(newData));
+    reset();
   };
 
   return (

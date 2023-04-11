@@ -9,28 +9,28 @@ class ProductService {
     }
 
     async getMerchantsProducts(): Promise<any> {
-        const { data } = httpReq.get('/merchant/products');
+        const { data } = await httpReq.get('/merchant/products');
         return data;
     }
 
     async getProductByID(id: string): Promise<IProduct> {
-        const { data } = httpReq.get(`/product/${id}`);
+        const { data } = await httpReq.get(`/product/${id}`);
         return data;
     }
 
     async addProduct(body: {}): Promise<IProduct> {
 
-        const { data } = httpReq.post(`/product/`, body);
+        const { data } = await httpReq.post(`/product/`, body);
         return data
     }
 
-    updateProduct(id: string, body: {}): Promise<IProduct> {
-        const { data } = httpReq.update(`/product/`, body);
+    async updateProduct(id: string, body: {}): Promise<IProduct> {
+        const { data } = await httpReq.update(`/product/`, body);
         return data
     }
 
-    deleteProduct(id: string): Promise<IProduct> {
-        const { data } = httpReq.delete(`/product/`, body);
+    async deleteProduct(id: string): Promise<IProduct> {
+        const { data } = await httpReq.delete(`/product/`);
         return data
     }
 }

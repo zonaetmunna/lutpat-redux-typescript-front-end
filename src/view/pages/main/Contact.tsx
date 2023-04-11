@@ -37,7 +37,6 @@ const Contact = () => {
                 </label>
                 <input
                   id="name"
-                  name="name"
                   type="text"
                   {...register("name", {
                     required: "Name is required",
@@ -59,7 +58,6 @@ const Contact = () => {
                 </label>
                 <input
                   id="email"
-                  name="email"
                   type="email"
                   {...register("email", {
                     required: "Email is required",
@@ -85,7 +83,6 @@ const Contact = () => {
                 </label>
                 <textarea
                   id="message"
-                  name="message"
                   {...register("message", {
                     required: "Message is required",
                   })}
