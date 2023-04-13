@@ -35,6 +35,12 @@ const Navbar = () => {
               Contact
             </Link>
             <Link
+              to="cart"
+              className="text-gray-900 hover:text-gray-500 px-3 py-2 rounded-md text-sm font-medium"
+            >
+              cart
+            </Link>
+            <Link
               to="/dashboard"
               className="text-gray-900 hover:text-gray-500 block px-3 py-2 rounded-md text-base font-medium"
             >

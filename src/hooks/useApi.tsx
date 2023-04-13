@@ -7,6 +7,8 @@ const useApi = <T,>(asyncFunction: () => Promise<T>) => {
   const [status, setStatus] = useState<StatusType>("idle");
   const [error, setError] = useState<string | null>(null);
 
+  console.log(data);
+
   useEffect(() => {
     setStatus("pending");
     setData(null);
@@ -22,7 +24,7 @@ const useApi = <T,>(asyncFunction: () => Promise<T>) => {
         setStatus("error");
         setData(null);
       });
-  }, [asyncFunction]);
+  }, []);
 
   return {
     data,

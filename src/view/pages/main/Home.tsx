@@ -6,6 +6,7 @@ import { IProduct } from "../../../types";
 
 const Home = () => {
   const { data, isLoading } = useApi<IProduct[]>(ProductService.getProducts);
+  console.log(data);
 
   return (
     <>

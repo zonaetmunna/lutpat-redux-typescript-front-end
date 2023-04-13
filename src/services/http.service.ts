@@ -3,9 +3,10 @@ import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } f
 
 
 const axiosConfig: AxiosRequestConfig = {
-    baseURL: process.env.REACT_APP_API_BASE_URL,
+    baseURL: "http://localhost:5000/api",
     timeout: 15000,
 };
+console.log(axiosConfig.baseURL);
 
 const instance: AxiosInstance = axios.create(axiosConfig);
 

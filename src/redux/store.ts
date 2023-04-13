@@ -12,10 +12,14 @@ const persistConfig = {
     storage,
 };
 
-
 const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 const middleware = applyMiddleware(ReduxThunk);
+
 const store = createStore(persistedReducer, composeWithDevTools(middleware));
+
 export const persistor = persistStore(store);
+
 export type AppState = ReturnType<typeof rootReducer>;
+
 export default store;

@@ -1,55 +1,22 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppState } from "../../../redux/store";
+import { removeFromCart } from "../../../redux/actions/cartAction";
 
 // types
-interface CartItem {
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
-}
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([
-    {
-      id: 1,
-      name: "Product 1",
-      price: 100,
-      quantity: 2,
-    },
-    {
-      id: 2,
-      name: "Product 2",
-      price: 50,
-      quantity: 1,
-    },
-  ]);
+  const dispatch = useDispatch();
+  const cart = useSelector((state: AppState) => state.cart);
+  console.log(cart);
 
-  const handleQuantityChange = (id: number, newQuantity: number) => {
-    const newCartItems = cartItems.map((item) => {
-      if (item.id === id) {
-        return {
-          ...item,
-          quantity: newQuantity,
-        };
-      }
-      return item;
-    });
-    setCartItems(newCartItems);
+  const handleRemoveItem = (id: string) => {
+    dispatch(removeFromCart(id));
   };
-
-  const handleRemoveItem = (id: number) => {
-    const newCartItems = cartItems.filter((item) => item.id !== id);
-    setCartItems(newCartItems);
-  };
-
-  const totalAmount = cartItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      {cartItems.length === 0 ? (
+      {cart.length === 0 ? (
         <p className="text-center text-xl font-bold">
           Your cart is currently empty.
         </p>
@@ -57,13 +24,13 @@ const Cart = () => {
         <>
           <h2 className="text-2xl font-bold mb-8">Your Cart</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {cartItems.map((item) => (
+            {cart.map((item) => (
               <div
-                key={item.id}
+                key={item._id}
                 className="bg-white shadow-md rounded-md overflow-hidden"
               >
                 <img
-                  src={`https://picsum.photos/id/${item.id}/200/200`}
+                  src={item.image}
                   alt={item.name}
                   className="w-full h-48 object-cover"
                 />
@@ -73,8 +40,8 @@ const Cart = () => {
                     ${item.price.toFixed(2)}
                   </p>
                   <div className="flex items-center">
-                    <label htmlFor={`quantity-${item.id}`}>Quantity:</label>
-                    <input
+                    <label htmlFor={`quantity-${item._id}`}>Quantity:</label>
+                    {/* <input
                       id={`quantity-${item.id}`}
                       type="number"
                       min="1"
@@ -83,9 +50,9 @@ const Cart = () => {
                         handleQuantityChange(item.id, e.target.valueAsNumber)
                       }
                       className="mx-2 border-gray-400 border rounded-md px-2 py-1 w-16"
-                    />
+                    /> */}
                     <button
-                      onClick={() => handleRemoveItem(item.id)}
+                      onClick={() => handleRemoveItem(item._id as string)}
                       className="bg-red-500 text-white font-medium px-2 py-1 rounded-md hover:bg-red-600"
                     >
                       Remove
@@ -97,9 +64,9 @@ const Cart = () => {
           </div>
           <div className="mt-8 flex justify-end">
             <div className="text-right">
-              <p className="text-lg font-bold">
+              {/* <p className="text-lg font-bold">
                 Total: ${totalAmount.toFixed(2)}
-              </p>
+              </p> */}
               <button className="bg-blue-500 text-white font-medium px-4 py-2 rounded-md hover:bg-blue-600">
                 Checkout
               </button>

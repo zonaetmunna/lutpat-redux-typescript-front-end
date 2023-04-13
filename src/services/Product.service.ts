@@ -4,7 +4,7 @@ import httpReq from "./http.service";
 class ProductService {
     async getProducts(): Promise<IProduct[]> {
         // return httpReq.get('/product');
-        const { data } = await httpReq.get("/product");
+        const { data } = await httpReq.get("/products");
         return data;
     }
 
@@ -14,13 +14,13 @@ class ProductService {
     }
 
     async getProductByID(id: string): Promise<IProduct> {
-        const { data } = await httpReq.get(`/product/${id}`);
+        const { data } = await httpReq.get(`/products/${id}`);
         return data;
     }
 
     async addProduct(body: {}): Promise<IProduct> {
 
-        const { data } = await httpReq.post(`/product/`, body);
+        const { data } = await httpReq.post(`/products/`, body);
         return data
     }
 
